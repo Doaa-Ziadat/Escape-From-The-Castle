@@ -22,7 +22,13 @@ public class KeyScript : MonoBehaviour
             {
                 // use  SendMessage() is because we don’t know the exact type of the target object and that command works on all GameObjects
                 // for this reason I used DontRequireReceiver so other objects can ignore it , 
-                hitCollider.SendMessage("UpdateDoor", SendMessageOptions.DontRequireReceiver);
+                //add if statement if he has the key !!
+                Vector3 vec = hitCollider.transform.position - transform.position;
+                if(Vector3.Dot(transform.forward,vec)>0.8f)
+                { // only if the player face the door , because of that I calculate the direstion using dot product.
+                hitCollider.SendMessage("DoorIsOpen", SendMessageOptions.DontRequireReceiver);
+
+                }
 
 
             }

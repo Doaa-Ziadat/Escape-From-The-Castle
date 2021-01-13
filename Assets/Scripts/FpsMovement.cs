@@ -23,6 +23,15 @@ public class FpsMovement : MonoBehaviour
 
     private CharacterController charController;
 
+    //for jump : 
+    public float jumpSpeed = 15.0f;
+    public float velocity = -10.0f;
+    public float minimunFalling = -1.5f;
+
+    private float vSpeed;
+
+    private ControllerColliderHit colision;
+
     void Start()
     {
         charController = GetComponent<CharacterController>();
@@ -47,8 +56,58 @@ public class FpsMovement : MonoBehaviour
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
 
+        // for jump :
+        bool inGround = false;
+        RaycastHit hit;
+        if(vSpeed<0 && Physics.Raycast(transform.position,Vector3.down,out hit ))
+        {
+            float check = (charController.height + charController.radius) / 1.9f;
+            inGround = hit.distance <= check;
+        }
+        if(inGround)
+        {
+            if (Input.GetButtonDown("Jump"))
+                vSpeed = jumpSpeed;
+            else
+                vSpeed = minimunFalling;
+        }
+
+        else
+        {
+            vSpeed += gravity * 5 * Time.deltaTime;
+            if(vSpeed < velocity)
+            {
+                vSpeed = velocity;
+            }
+        
+        }
+      /*  if(charController.isGrounded)
+        {
+            if(Vector3.Dot(movement, colision.normal)<0)
+            {
+                movement = colision.normal * jumpSpeed;
+            }
+            else
+            {
+                movement += colision.normal * jumpSpeed;
+
+            }
+
+        }
+      */
+        movement.y = vSpeed;
+        movement.y *= Time.deltaTime;
+        
+
         charController.Move(movement);
     }
+
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        colision = hit;
+    }
+
 
     private void RotateCharacter()
     {
