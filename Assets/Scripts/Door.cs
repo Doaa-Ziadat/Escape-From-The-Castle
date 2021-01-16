@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickItem : MonoBehaviour
+public class Door : MonoBehaviour
 {
-   [SerializeField] private string itemName;
+    [SerializeField] private Vector3 dis;
+    bool opened;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,14 @@ public class PickItem : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        Managers.Inventory.AddItem(itemName);
-        Destroy(this.gameObject);
+        if (Managers.Inventory.equippedItem == "key")
+        {
+            Vector3 pos = transform.position - dis;
+            transform.position = pos;
+            opened = true;
+        }
     }
 }

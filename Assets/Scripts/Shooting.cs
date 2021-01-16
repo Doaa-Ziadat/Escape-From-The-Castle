@@ -9,8 +9,8 @@ public class Shooting: MonoBehaviour
         camera = GetComponent<Camera>();
 
         //make the mouse invisible 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+      // Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.visible = false;
     }
 
     // Update is called once per frame
