@@ -41,6 +41,7 @@ public class Shooting: MonoBehaviour
                 else
                 {
                     StartCoroutine(SphereIndicator(hit.point));
+                    
                 }
             }
         }
