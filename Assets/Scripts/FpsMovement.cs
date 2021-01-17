@@ -1,6 +1,8 @@
 ﻿
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -49,57 +51,58 @@ public class FpsMovement : MonoBehaviour
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
 
-        Vector3 movement = new Vector3(deltaX, 0, deltaZ);
-        movement = Vector3.ClampMagnitude(movement, speed);
+            Vector3 movement = new Vector3(deltaX, 0, deltaZ);
+            movement = Vector3.ClampMagnitude(movement, speed);
 
-        movement.y = gravity;
-        movement *= Time.deltaTime;
-        movement = transform.TransformDirection(movement);
+            movement.y = gravity;
+            movement *= Time.deltaTime;
+            movement = transform.TransformDirection(movement);
 
-        // for jump :
-        bool inGround = false;
-        RaycastHit hit;
-        if(vSpeed<0 && Physics.Raycast(transform.position,Vector3.down,out hit ))
-        {
-            float check = (charController.height + charController.radius) / 1.9f;
-            inGround = hit.distance <= check;
-        }
-        if(inGround)
-        {
-            if (Input.GetButtonDown("Jump"))
-                vSpeed = jumpSpeed;
-            else
-                vSpeed = minimunFalling;
-        }
-
-        else
-        {
-            vSpeed += gravity * 5 * Time.deltaTime;
-            if(vSpeed < velocity)
+            // for jump :
+            bool inGround = false;
+            RaycastHit hit;
+            if (vSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
             {
-                vSpeed = velocity;
+                float check = (charController.height + charController.radius) / 1.9f;
+                inGround = hit.distance <= check;
             }
-        
-        }
-      /*  if(charController.isGrounded)
-        {
-            if(Vector3.Dot(movement, colision.normal)<0)
+            if (inGround)
             {
-                movement = colision.normal * jumpSpeed;
+                if (Input.GetButtonDown("Jump"))
+                    vSpeed = jumpSpeed;
+                else
+                    vSpeed = minimunFalling;
             }
+
             else
             {
-                movement += colision.normal * jumpSpeed;
+                vSpeed += gravity * 5 * Time.deltaTime;
+                if (vSpeed < velocity)
+                {
+                    vSpeed = velocity;
+                }
 
             }
+            /*  if(charController.isGrounded)
+              {
+                  if(Vector3.Dot(movement, colision.normal)<0)
+                  {
+                      movement = colision.normal * jumpSpeed;
+                  }
+                  else
+                  {
+                      movement += colision.normal * jumpSpeed;
 
-        }
-      */
-        movement.y = vSpeed;
-        movement.y *= Time.deltaTime;
+                  }
+
+              }
+            */
+            movement.y = vSpeed;
+            movement.y *= Time.deltaTime;
+
+            charController.Move(movement);
+
         
-
-        charController.Move(movement);
     }
 
 
@@ -113,7 +116,7 @@ public class FpsMovement : MonoBehaviour
     {
         transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
     }
-
+     
     private void RotateCamera()
     {
         rotationVert -= Input.GetAxis("Mouse Y") * sensitivityVert;

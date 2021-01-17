@@ -78,7 +78,7 @@ public class EnemyMovement : MonoBehaviour
                 PlayerReact player = hitObject.GetComponent<PlayerReact>();
                 if (player)
                 {
-                    Debug.Log("near the player ");
+                   // Debug.Log("near the player ");
                     if (fireball == null)
                     {
                         fireball = Instantiate(fireBallP) as GameObject;
@@ -111,11 +111,11 @@ public class EnemyMovement : MonoBehaviour
        float distance= Vector3.Distance(targetPosition, transform.position);
         if (distance>3.0f) // ditance from the player 
         {
-            Debug.Log(distance);
             if (transform.position != targetObject.transform.position)
                 transform.position = transform.position + Movement * 1.0f * Time.deltaTime;
+        }
         }
     }
 
 
-}
+

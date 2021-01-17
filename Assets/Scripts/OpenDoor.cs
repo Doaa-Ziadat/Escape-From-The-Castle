@@ -4,7 +4,7 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     [SerializeField] private Vector3 dis; // the amount the door moves when it is open ,
-    private bool open = false;
+    private bool open;
 
     // Update is called once per frame
     public void DoorIsOpen()
