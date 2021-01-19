@@ -20,9 +20,11 @@ public class loadNextScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("End room !");
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (other.CompareTag("TargetObject"))
+        {
+            Debug.Log("End room !");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
   
 
