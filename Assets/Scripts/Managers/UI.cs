@@ -4,6 +4,39 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    int index=-1;
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            index = 1;
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            index = 2;
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            index = 3;
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            index = 4;
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            index = 5;
+
+        }
+
+
+    }
     private void OnGUI()
     {
         int xpos = 10;
@@ -26,7 +59,6 @@ public class UI : MonoBehaviour
             //GUI.Box(new Rect(xpos, ypos, width, height), new GUIContent(item  +"(" + count + ")"));
             xpos += width + space;
 
-
         }
 
         string equipped = Managers.Inventory.equippedItem;
@@ -40,12 +72,27 @@ public class UI : MonoBehaviour
 
         xpos = 10;
         ypos += height + space;
+        int c = 0;
         foreach (string item in Items)
         {
+            c++;
             if (GUI.Button(new Rect(xpos, ypos, width, 30), "Equip " + (item)))
             Managers.Inventory.EquipItem(item);
+            //add also equib option by numbers
+            if (index != -1 && c==index)
+            {
+                Managers.Inventory.EquipItem(item);
+                index = -1;
+            }
             xpos += width + space;
 
         }
+
+ 
+
+       
+
+
+
     }
 }

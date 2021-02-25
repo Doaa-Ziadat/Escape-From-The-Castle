@@ -10,8 +10,8 @@ public class MazeMeshGenerator
     public MazeMeshGenerator()
     {
         // are used to determine where quads are positioned and how big they are.
-        width = 3.75f;
-        height = 3.5f;
+        width = 8.75f;
+        height = 8.5f;
     }
 
     //called by the method MazeConstructor to generate a mesh

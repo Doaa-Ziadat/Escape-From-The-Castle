@@ -23,6 +23,8 @@ public class FireBallScript : MonoBehaviour
         if(player!=null)
         {
             Debug.Log("Player hit!");
+            Destroy(this.gameObject);
+
             player.HurtPlayer(damage);
         }
         Destroy(this.gameObject);

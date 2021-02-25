@@ -4,12 +4,14 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     [SerializeField] private Vector3 dis; // the amount the door moves when it is open ,
-    private bool open;
+    private bool open ;
 
     // Update is called once per frame
     public void DoorIsOpen()
     {
-        if(open)
+        Debug.Log("entereeeeeeeeeeeeeed");
+
+        if (open)
         {
             Vector3 pos = transform.position - dis;
             transform.position = pos;

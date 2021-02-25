@@ -7,11 +7,14 @@ public class EnemyMovement : MonoBehaviour
     public float obstacleDistance = 5.0f;
     private bool alive;
 
+    public GameObject front;
+
 
     float rotationSpeed = 0.9f;// betwen 0-1
     GameObject targetObject = null;
     Vector3 Movement;
 
+    int offestTarget;
 
     [SerializeField] private GameObject fireBallP;
     private GameObject fireball;
@@ -21,6 +24,8 @@ public class EnemyMovement : MonoBehaviour
 
         //target to rotate towards
         targetObject = GameObject.FindGameObjectWithTag("TargetObject") as GameObject;
+        offestTarget = Random.Range(10, 3);
+      
 
     }
 
@@ -47,6 +52,13 @@ public class EnemyMovement : MonoBehaviour
             }
             // get position of target object
             Vector3 targetPosition = targetObject.transform.position;
+          
+            //temp 
+            targetPosition=new Vector3( targetPosition.x, 0, targetPosition.z);
+
+
+           // targetPosition = targetPosition + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+
 
             // calculate rotation to 
             Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
@@ -59,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
 
-
+            
             Vector3 direction = targetPosition - transform.position;
             // apply movement toward the player 
             direction.Normalize();
@@ -81,10 +93,18 @@ public class EnemyMovement : MonoBehaviour
                    // Debug.Log("near the player ");
                     if (fireball == null)
                     {
-                        fireball = Instantiate(fireBallP) as GameObject;
-                        fireball.transform.position= transform.TransformPoint(Vector3.forward * 1.5f);
-                        fireball.transform.rotation = transform.rotation;
-                        
+                        Physics.SphereCast(ray, 0.05f, out hit);
+
+                         hitObject = hit.transform.gameObject;
+                         player = hitObject.GetComponent<PlayerReact>();
+                       // if (!player)
+                        {
+
+                            fireball = Instantiate(fireBallP) as GameObject;
+                            fireball.transform.position = front.transform.TransformPoint(Vector3.forward * 1.5f);
+                            fireball.transform.position = front.transform.TransformPoint(Vector3.up * 3.2f);
+                            fireball.transform.rotation = front.transform.rotation;
+                        }
                         
                     }
                 }
@@ -109,9 +129,10 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector3 targetPosition = targetObject.transform.position;
        float distance= Vector3.Distance(targetPosition, transform.position);
-        if (distance>3.0f) // ditance from the player 
+        if (distance>offestTarget) // ditance from the player 
         {
-            if (transform.position != targetObject.transform.position)
+    
+           if (transform.position != targetObject.transform.position)
                 transform.position = transform.position + Movement * 1.0f * Time.deltaTime;
         }
         }

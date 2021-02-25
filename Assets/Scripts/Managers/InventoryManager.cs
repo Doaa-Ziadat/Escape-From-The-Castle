@@ -60,7 +60,7 @@ public class InventoryManager : MonoBehaviour, MyGameManager
      //call the func to equip a specefic item 
     public bool EquipItem(string name)
     {
-        if( Items.ContainsKey(name) && equippedItem!=name )
+        if( Items.ContainsKey(name) && equippedItem!=name) 
         {
             equippedItem = name;
             Debug.Log("item equipped : " + name);
