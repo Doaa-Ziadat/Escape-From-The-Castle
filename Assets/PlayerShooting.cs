@@ -7,7 +7,7 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] private GameObject fireBallP;
     private GameObject fireball;
-    public int bulletTogether = 8;
+    public int bulletTogether = 15;
 
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
 
             if (fireball == null)
             {
-                bulletTogether = 8;
+                bulletTogether = 15;
             }
         }
     }

@@ -27,8 +27,8 @@ public class SceneController : MonoBehaviour
                 //copy the perfap to the object
                 enemy = Instantiate(enemyP) as GameObject;
 
-                int x = Random.Range(-7, 9);
-                // maybe later use variable
+                int x = Random.Range(-7, 19);
+                //use variables
                 int z = Random.Range(z1, z2);
                 z1 += 5;
                 z2 += 5;

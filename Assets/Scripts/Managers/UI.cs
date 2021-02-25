@@ -45,9 +45,13 @@ public class UI : MonoBehaviour
         int height = 40;
         int space = 10;
 
+        Texture2D imagee = Resources.Load<Texture2D>("Icons/" + "Heart");
+        GUI.Box(new Rect(0, 100, 100, 40), new GUIContent(" (" + Managers.Player.lives + ")", imagee));
+
         List<string> Items = Managers.Inventory.GetItems();
         if(Items.Count==0)
         {
+    
             GUI.Box(new Rect(xpos, ypos, width, height), "No Items");
         }
 

@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour, MyGameManager
     // Start is called before the first frame update
     public void Startup()
     {
+        
         Debug.Log(" starting Inventory Manager: ");
         Items = new Dictionary<string, int>();
         status = StatusManager.Started;

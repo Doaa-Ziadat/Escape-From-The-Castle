@@ -27,6 +27,14 @@ public class scope : MonoBehaviour
                     onUnsoped();
             }
         }
+
+      if (Managers.Inventory.equippedItem != "Arrow" &&  Input.GetMouseButtonDown(1) && isScpoed==true)
+            {
+                onUnsoped();
+
+            }
+ 
+
     }
 
     IEnumerator onScoped()
@@ -42,6 +50,7 @@ public class scope : MonoBehaviour
 
     void onUnsoped()
     {
+
         scopeOverlay.SetActive(false);
         WeaponCamera.SetActive(false);
         // zoom out 
