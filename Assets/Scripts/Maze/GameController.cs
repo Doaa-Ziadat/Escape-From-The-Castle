@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
 
     private void StartNewGame()
     {
-        timeLimit = 80;
+        timeLimit = 70;
         reduceLimitBy = 5;
         startTime = DateTime.Now;
 
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
     private void StartNewMaze()
     {
         //13,15
-        generator.GenerateNewMaze(11, 11, OnStartTrigger, OnGoalTrigger);
+        generator.GenerateNewMaze(13, 15, OnStartTrigger, OnGoalTrigger);
 
         float x = generator.startCol * generator.hallWidth;
         float y = 1;

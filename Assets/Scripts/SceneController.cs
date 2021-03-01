@@ -49,6 +49,9 @@ public class SceneController : MonoBehaviour
                 enemyTogether = 4;
                 generate--;
             }
+
+
+
         }
 
     
