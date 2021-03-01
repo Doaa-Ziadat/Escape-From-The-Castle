@@ -9,6 +9,8 @@ TagManager:
   - PlayerCenter
   - enemey
   - enemey2
+  - enemey1
+  - enemey11
   layers:
   - Default
   - TransparentFX

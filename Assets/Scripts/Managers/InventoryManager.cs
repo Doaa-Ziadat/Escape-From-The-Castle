@@ -58,7 +58,15 @@ public class InventoryManager : MonoBehaviour, MyGameManager
             return Items[name];
         return 0;
     }
-     //call the func to equip a specefic item 
+
+    public void consume(string name)
+    {
+        if (Items.ContainsKey(name))
+            Items[name] = Items[name] - 1;
+   
+    }
+
+    //call the func to equip a specefic item 
     public bool EquipItem(string name)
     {
         if( Items.ContainsKey(name) && equippedItem!=name) 

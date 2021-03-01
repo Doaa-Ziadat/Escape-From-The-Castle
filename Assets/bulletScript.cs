@@ -31,8 +31,18 @@ public class bulletScript : MonoBehaviour
 
         }
 
-        if (other.CompareTag("enemey2"))
+        if (other.CompareTag("enemey1") || other.CompareTag("enemey11"))
         {
+            if(other.CompareTag("enemey1"))
+            {
+                Managers.Player.Tower1 = false;
+            }
+            else
+            {
+                Managers.Player.Tower2 = false;
+
+            }
+
             Debug.Log("Targeeeet2 hit");
             Target2React target2 = other.GetComponent<Target2React>();
             if(target2==null)

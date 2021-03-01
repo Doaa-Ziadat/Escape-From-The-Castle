@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2173379333657852067}
   m_Layer: 0
   m_Name: Enemy 1
-  m_TagString: enemey2
+  m_TagString: enemey1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 321237284357013008}
   m_Layer: 9
   m_Name: Body
-  m_TagString: enemey2
+  m_TagString: enemey1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
       propertyPath: m_TagString
-      value: enemey2
+      value: enemey1
       objectReference: {fileID: 0}
     - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
       propertyPath: m_LocalPosition.x

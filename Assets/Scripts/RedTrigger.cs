@@ -44,6 +44,9 @@ public class RedTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Managers.Player.Tower1 = true;
+        Managers.Player.Tower2= true;
+
         GetComponent<Renderer>().material.color = new Color(0.8f, 0,0);
         A.GetComponent<Renderer>().material.color = new Color(0.8f, 0, 0);
         B.GetComponent<Renderer>().material.color = new Color(0.8f, 0, 0);
@@ -58,8 +61,8 @@ public class RedTrigger : MonoBehaviour
             enemy = Instantiate(enemyP1) as GameObject;
             enemy2 = Instantiate(enemyP11) as GameObject;
 
-            enemy.transform.position = new Vector3(41, 33.5f, 253);
-            enemy2.transform.position = new Vector3(-27, 33.5f, 247);
+            enemy2.transform.position = new Vector3(41, 33.5f, 253);
+            enemy.transform.position = new Vector3(-27, 33.5f, 247);
        
         }
 
