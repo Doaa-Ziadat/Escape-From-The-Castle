@@ -15,6 +15,7 @@ public class fireball2Script : MonoBehaviour
     GameObject targetObject = null;
     Vector3 Movement;
     bool twiceflag = true;
+    float minY = 25.2f;
 
 
     void Start()
@@ -50,18 +51,16 @@ public class fireball2Script : MonoBehaviour
             targetPosition.y = targetPosition.y + 2.5f;
 
 
-            // targetPosition = targetPosition + new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
-
 
             // calculate rotation to 
-            // Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+             Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
 
             // rotation at z  and x axis is zero
             // targetRotation.z = 0;
             //targetRotation.x = 0;
 
             // Apply rotation
-            // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
 
 
@@ -71,6 +70,10 @@ public class fireball2Script : MonoBehaviour
             Movement = direction;
             //  transform.position = transform.position + direction * 4.0f * Time.deltaTime;
 
+            if(transform.position.y<minY)
+            {
+                Destroy(this.gameObject, 0.5f);
+            }
         }
     }
 
