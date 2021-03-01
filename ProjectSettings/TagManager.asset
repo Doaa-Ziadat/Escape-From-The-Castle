@@ -8,6 +8,7 @@ TagManager:
   - TargetObject
   - PlayerCenter
   - enemey
+  - enemey2
   layers:
   - Default
   - TransparentFX

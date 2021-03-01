@@ -1,7 +1,8 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetReact : MonoBehaviour
+public class Target2React : MonoBehaviour
 {
     int flag = 0;
 
@@ -9,35 +10,38 @@ public class TargetReact : MonoBehaviour
     {
         Debug.Log("died..");
 
-        EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
-        if(enemyMovement!=null)
+        enemey2Script enemyMovement = GetComponent<enemey2Script>();
+        if (enemyMovement != null)
         {
             enemyMovement.setAlive(false);
         }
-        enemey2Script enemyMovement2 = GetComponent<enemey2Script>();
-
-        if (this.transform.parent != null && enemyMovement2==null)
+        if (this.transform.parent != null)
         {
 
-            enemyMovement =  this.GetComponentInParent<EnemyMovement>();
+            enemyMovement = this.GetComponentInParent<enemey2Script>();
             enemyMovement.setAlive(false);
             flag = 1;
 
         }
-        StartCoroutine(Die());
+
+    StartCoroutine(Die());
+  
+
     }
 
-  private IEnumerator Die()
+    private IEnumerator Die()
     {
-        if(flag==1)
+      if (flag == 1)
         {
             this.transform.parent.Rotate(-75, 0, 0);
             yield return new WaitForSeconds(1.5f);
             Destroy(this.transform.parent.gameObject);
         }
-        this.transform.Rotate(-75,0,0 );
+        this.transform.Rotate(-75, 0, 0);
         yield return new WaitForSeconds(1.5f);
-        Destroy(this.gameObject); 
+        Destroy(this.gameObject);
     }
 
 }
+
+

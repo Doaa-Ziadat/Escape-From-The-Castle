@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6784170307408391126
+--- !u!114 &906135587613349750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1424487010933692421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d8725abc5a20c4482d574144fec0dc, type: 3}
+  m_Script: {fileID: 11500000, guid: df245d881590c8847b6b33b52c81d394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3557483333572604505
@@ -24,10 +24,10 @@ GameObject:
   - component: {fileID: 6638627546683204760}
   - component: {fileID: 7535474091300864990}
   - component: {fileID: 367306463562500092}
-  - component: {fileID: 7006209419468238894}
+  - component: {fileID: 7683372443492872304}
   m_Layer: 9
   m_Name: Body
-  m_TagString: enemey
+  m_TagString: enemey2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7006209419468238894
+--- !u!114 &7683372443492872304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3557483333572604505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d8725abc5a20c4482d574144fec0dc, type: 3}
+  m_Script: {fileID: 11500000, guid: df245d881590c8847b6b33b52c81d394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4834633974079438881
@@ -161,10 +161,11 @@ GameObject:
   - component: {fileID: 7428487448816529583}
   - component: {fileID: 7428487448816529580}
   - component: {fileID: 7428487448816529581}
-  - component: {fileID: 3252250152590221929}
+  - component: {fileID: 6293728825598656851}
+  - component: {fileID: -6962322332074824744}
   m_Layer: 0
   m_Name: Enemy 1 1
-  m_TagString: enemey
+  m_TagString: enemey2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +247,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3252250152590221929
+--- !u!114 &6293728825598656851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,7 +256,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7428487448816529578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d8725abc5a20c4482d574144fec0dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 48b0c0673e2714240bc8fc54f59d988c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6962322332074824744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428487448816529578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df245d881590c8847b6b33b52c81d394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1424487010933792473
@@ -271,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
       propertyPath: m_TagString
-      value: enemey
+      value: enemey2
       objectReference: {fileID: 0}
     - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
       propertyPath: m_LocalPosition.x

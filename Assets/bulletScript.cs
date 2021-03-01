@@ -22,17 +22,31 @@ public class bulletScript : MonoBehaviour
         // TargetReact target = other.GetComponent<TargetReact>();
         if (other.CompareTag("enemey"))
         {
+                
             TargetReact target = other.GetComponent<TargetReact>();
 
-            if (target != null)
-            {
                 Debug.Log("target hit!");
                 Destroy(this.gameObject);
                target.HitReact();
 
-            }
         }
-            Destroy(this.gameObject);
+
+        if (other.CompareTag("enemey2"))
+        {
+            Debug.Log("Targeeeet2 hit");
+            Target2React target2 = other.GetComponent<Target2React>();
+            if(target2==null)
+            {
+                target2 = this.GetComponentInParent<Target2React>();
+            }
+            if (target2 != null)
+            {
+                Destroy(this.gameObject);
+                target2.HitReact();
+            }
+
+        }
+        Destroy(this.gameObject);
         }
     
 }

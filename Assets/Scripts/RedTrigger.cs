@@ -24,7 +24,7 @@ public class RedTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -44,29 +44,28 @@ public class RedTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        entered = true;
         GetComponent<Renderer>().material.color = new Color(0.8f, 0,0);
         A.GetComponent<Renderer>().material.color = new Color(0.8f, 0, 0);
         B.GetComponent<Renderer>().material.color = new Color(0.8f, 0, 0);
         C.GetComponent<Renderer>().material.color = new Color(0.8f, 0, 0);
 
+        if (!entered)
+        {
+            entered = true;
 
 
+            //copy the perfap to the object
+            enemy = Instantiate(enemyP1) as GameObject;
+            enemy2 = Instantiate(enemyP11) as GameObject;
 
-        //copy the perfap to the object
-        enemy = Instantiate(enemyP1) as GameObject;
-        enemy2 = Instantiate(enemyP11) as GameObject;
-
-        enemy.transform.position = new Vector3(41,33.5f, 253);
-        enemy2.transform.position = new Vector3(-27, 33.5f, 247);
-
-
-
-
-
+            enemy.transform.position = new Vector3(41, 33.5f, 253);
+            enemy2.transform.position = new Vector3(-27, 33.5f, 247);
+       
+        }
 
 
 
     }
+  
 
 }
