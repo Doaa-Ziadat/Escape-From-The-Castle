@@ -7,6 +7,10 @@ public class RotateCamera : MonoBehaviour
     [SerializeField] private Transform player;
     public float speed = 1.5f;
     private float yRoation;
+
+    private float xRoation;
+    public GameObject WeaponCamera = null;
+
     private Vector3 offest;
    // public Transform target, obstruction;
     float zoomSpeed = 2.0f;
@@ -25,7 +29,7 @@ public class RotateCamera : MonoBehaviour
         
     }
 
-    
+    [System.Obsolete]
     private void LateUpdate()
     {
         // trying to fix when obstacle in front of the camera 
@@ -59,10 +63,24 @@ public class RotateCamera : MonoBehaviour
        // or using the mouse
         {
             yRoation += Input.GetAxis("Mouse X") * speed * 2;
+            if (WeaponCamera != null)
+            {
+                if (WeaponCamera.active == true)
+                {
+                    xRoation += -Input.GetAxis("Mouse Y") * speed * 2;
+                }
+                else
+                    xRoation = 0;
+
+            }
+            else
+            {
+                xRoation = 0;
+            }
         }
 
         // convert  the rotaion to quaternion 
-        Quaternion rotation = Quaternion.Euler(0, yRoation, 0);
+        Quaternion rotation = Quaternion.Euler(xRoation, yRoation, 0);
         // Multiplying a position vector by a quaternion  
         //results in a position that’s shifted over according to that rotation
        transform.position = player.position - (rotation * offest);

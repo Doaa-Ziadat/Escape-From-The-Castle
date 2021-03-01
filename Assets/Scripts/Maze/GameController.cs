@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private FpsMovement player;
     [SerializeField] private Text timeLabel;
     [SerializeField] private Text scoreLabel;
+    [SerializeField] private Text newmazelabel;
+
 
     private MazeConstructor generator;
 
@@ -32,12 +34,13 @@ public class GameController : MonoBehaviour
 
     private void StartNewGame()
     {
-        timeLimit = 70;
+        timeLimit = 60;
         reduceLimitBy = 5;
         startTime = DateTime.Now;
 
         score = 0;
         scoreLabel.text = score.ToString();
+        newmazelabel.text = " ";
 
         StartNewMaze();
     }
@@ -77,9 +80,10 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            timeLabel.text = "TIME UP";
+            timeLabel.text = "TIME UP!";
+            newmazelabel.text="THE cASTLE MAZE HAS CHANGED!";
             player.enabled = false;
-
+            Managers.Player.ChangeLives();
             Invoke("StartNewGame", 4);
         }
     }
